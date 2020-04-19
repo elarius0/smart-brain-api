@@ -1,11 +1,10 @@
 const express = require('express');
 const app = express();
+const port = process.env.PORT || 3001;
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
-const PORT = process.env.PORT || 3001
-
 
 const register = require('./Controllers/register');
 const signin = require('./Controllers/signin');
@@ -21,9 +20,6 @@ const db = knex({
     database: 'smartbrains',
   },
 });
-
-
-
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -51,6 +47,6 @@ app.post('/imageurl', (req, res) => {
   image.handleApiCall(req, res);
 });
 
-app.listen(PORT, () => {
-  console.log(`App is running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`App is running on port ${port}`);
 });
