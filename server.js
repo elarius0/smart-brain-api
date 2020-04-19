@@ -1,9 +1,11 @@
 const express = require('express');
+const app = express();
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001
+
 
 const register = require('./Controllers/register');
 const signin = require('./Controllers/signin');
@@ -20,7 +22,8 @@ const db = knex({
   },
 });
 
-const app = express();
+
+
 
 app.use(cors());
 app.use(bodyParser.json());
